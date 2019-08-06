@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图书借阅榜</title>
+<style>
+/* 导航栏属性 */
+.navigation{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top:0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navigation2{
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    z-index:3; 
+    display:inline-block;
+    position:relative;
+} 
+
+.size{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align:center;
+    width: 400px;
+    float: left;
+}
+.size:hover{
+    text-align:center;
+    width: 400px;
+    background-color: #111;
+    float: left;
+}
+.active{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    float: left;
+} 
+.active:hover{
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    background-color: #111;
+    float: left;
+}
+.size2{
+    border:2px solid transparent;
+    border-radius: 12px;
+    text-decoration: none;
+    display: block;
+    color: black;
+    background-color: #f0f0f0;
+    margin-top:20px;
+    margin-left:20px;
+    padding: 14px 16px;
+    text-align:center;
+    width: 125px;
+    position: relative;
+    
+}
+.size2:hover{
+    text-align:center;
+    background-color: #4caf50;
+    color:white;
+}
+
+.size3{
+    border:2px solid transparent;
+    border-radius: 12px;
+    text-decoration: none;
+    display: block;
+    color: white;
+    background-color: #4caf50;
+    margin-top:20px;
+    margin-left:20px;
+    padding: 14px 16px;
+    text-align:center;
+    width: 125px;
+    position: relative;
+    
+}
+.size3:hover{
+    text-align:center;
+    background-color: #f0f0f0;
+    color:black;
+}
+
+.active2{
+    border:2px solid transparent;
+    border-radius: 12px;
+    text-decoration: none;
+    display: block;
+    color: white;
+    background-color: #4caf50;
+    margin-top:20px;
+    margin-left:20px;
+    padding: 14px 16px;
+    text-align:center;
+    width: 125px;
+    position: relative;
+    
+}
+.active2:hover{
+    text-align:center;
+    background-color: #f0f0f0;
+    color:black;
+}
+
+.time{
+    color: #FFF;
+    font-family: "Times New Roman", "Microsoft YaHei";
+    margin-left:450px;
+    margin-top: -400px;
+    margin-bottom:210px;
+    /* display:inline-block; */
+    border-left:3px solid #484848;
+}
+
+.time-icon{
+    text-align:center;
+    /* display:inline-block; */
+    transform:rotate(45deg);text-align:center;
+    margin-left:-14px;
+    margin-top:-25px;
+    width:25px;
+    height:25px;
+    background:#111;
+    position:absolute;
+}
+
+.time-line{
+    width:500px;
+    height:290px;
+    border:2px solid #d0d0d0 transparent;
+    border-left:2px solid #DDD;
+    padding-left:10px;
+    background:#c0c0c0;
+    margin-top:10px;
+    margin-left:25px;
+    border-radius:10px;
+    /* display:inline-block; */
+    box-shadow: 3px 3px 30px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.time-bookname{
+    border:3px solid white;
+    border-top:transparent;
+    border-left:transparent;
+    border-right:transparent;
+    
+    /* position:absolute; */
+    /* margin-top:10px;
+    margin-left:10px; */
+    margin:12px;
+    font-size:20px;
+    white-space:pre;
+    font-weight:bold;
+    /* position:relative;   */
+}
+
+body {
+    background:url(picture/flower3.jpg) no-repeat center 10px;
+    background-size: cover;
+    background-attachment: fixed;	
+    background-position: center 0px;
+}
+
+</style>
+</head>
+<body>
+
+<ul class="navigation">
+
+            <li><a href="shome.html"class="active">我的借阅</a></li>
+            <li><a href="quit.php"class="size">退出登录</a></li>
+ 
+</ul>
+<br/>
+
+<ul class="navigation2" >
+    
+        <li ><a class='size2'href='borrow.html'>借阅图书</a></li>
+        <li><a class = 'size2' href="return.html">归还图书</a></li>
+        <li><a class = 'size2' href="check.html">查询图书</a></li>
+        <li><p class='size2' onclick='tagkind1()' id='bookborrow'>图书借阅榜</p></li>
+        <li><p class='size2' onclick='tagkind3()' id='personborrow'>个人借阅榜</p></li>
+        <li><p class='size2' onclick='tagkind2()' id='goodbook'>图书好评榜</p></li>
+</ul>
+
+<script>
+var Ohref=decodeURI(window.location.href);
+var tag=Ohref.split('?tagkind=')[1];
+console.log(tagkind);
+var tagkind;
+function tagkind1(){
+    tagkind = 1;
+    var url = encodeURI("hotborrow.html?tagkind="+ tagkind);
+    window.location.href = url;
+}
+
+function tagkind2(){
+    tagkind = 2;
+    var url = encodeURI("hotborrow.html?tagkind="+ tagkind);
+    window.location.href = url;
+}
+
+function tagkind3(){
+    tagkind = 3;
+    var url = encodeURI("hotborrow.html?tagkind="+ tagkind);
+    window.location.href = url;
+}
+
+if(tag == 3){
+        var personborrow = document.getElementById("personborrow");
+        personborrow.classList.add('size3');
+    }
+</script>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+    if(tag == 1){
+                var bookborrow = document.getElementById("bookborrow");
+                bookborrow.classList.add('size3');
+            }
+
+    if(tag == 2){
+        var goodbook = document.getElementById("goodbook");
+        goodbook.classList.add('size3');
+    }
+
+        var result;
+        $.ajax({
+            url: "hotborrow.php",
+            type: "post",
+            data:{
+                'tagkind':tag
+            },
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                result = data;
+                //  document.write(data.length);
+                console.log(data);
+            },
+            error: function () {
+                alert('出现异常啦...'); window.location.href = 'shome.html'
+            }
+        });    
+
+        
+    </script>
+
+
+<div class="time" id='time'>
+    
+</div>
+
+
+<script>
+    var i;
+    var time = document.getElementById("time");
+    time.classList.add('time');
+    time.innerHTML= null;
+    if(tag == 1||tag == 2){
+        for(i=0;i<result.length;i++)
+        {
+            var icon = document.createElement("div");
+            time.appendChild(icon);
+            icon.classList.add('time-icon');
+
+            var line = document.createElement("div");
+            time.appendChild(line);
+            line.classList.add('time-line');
+
+            var br = document.createElement("br");
+            line.appendChild(br);
+
+            //开始向表格里填内容
+            var number = document.createElement("p");
+            var node = document.createTextNode("Number:" + "   "+(i + 1));
+            number.appendChild(node);
+            line.appendChild(number);
+            number.classList.add('time-bookname');
+
+            var bookname = document.createElement("p");
+            var node = document.createTextNode("Bookname:" + "   "+ result[i].bookname);
+            bookname.appendChild(node);
+            line.appendChild(bookname);
+            bookname.classList.add('time-bookname');
+
+            var author = document.createElement("p");
+            var node = document.createTextNode("Author:" + "   "+ result[i].author);
+            author.appendChild(node);
+            line.appendChild(author);
+            author.classList.add('time-bookname');
+
+            var BorrowingNumber = document.createElement("p");
+            var node = document.createTextNode("Borrowing Number:" + "   "+ result[i].times);
+            BorrowingNumber.appendChild(node);
+            line.appendChild(BorrowingNumber);
+            BorrowingNumber.classList.add('time-bookname');
+
+            var total = document.createElement("p");
+            var node = document.createTextNode("Total Point:" + "   "+ result[i].totalpoints);
+            total.appendChild(node);
+            line.appendChild(total);
+            total.classList.add('time-bookname');
+
+            var br = document.createElement("br");
+            line.appendChild(br);
+
+            var br = document.createElement("br");
+            line.appendChild(br);
+
+            var br = document.createElement("br");
+            time.appendChild(br);
+            if(i == 100)
+            {
+                break;
+            }
+
+        }
+    }
+    else if(tag == 3){
+        for(i=0;i<result.length;i++)
+        {
+            var icon = document.createElement("div");
+            time.appendChild(icon);
+            icon.classList.add('time-icon');
+
+            var line = document.createElement("div");
+            time.appendChild(line);
+            line.classList.add('time-line');
+
+            var br = document.createElement("br");
+            line.appendChild(br);
+
+            //开始向表格里填内容
+            var number = document.createElement("p");
+            var node = document.createTextNode("Number:" + "   "+(i + 1));
+            number.appendChild(node);
+            line.appendChild(number);
+            number.classList.add('time-bookname');
+
+            var id = document.createElement("p");
+            var node = document.createTextNode("ID:" + "   "+ result[i].id);
+            id.appendChild(node);
+            line.appendChild(id);
+            id.classList.add('time-bookname');
+
+            var times = document.createElement("p");
+            var node = document.createTextNode("Borrowing Number:" + "   "+ result[i].times);
+            times.appendChild(node);
+            line.appendChild(times);
+            times.classList.add('time-bookname');
+
+            var br = document.createElement("br");
+            line.appendChild(br);
+
+            var br = document.createElement("br");
+            line.appendChild(br);
+
+            var br = document.createElement("br");
+            time.appendChild(br);
+            if(i == 100)
+            {
+                break;
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

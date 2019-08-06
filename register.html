@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册</title>
+<style>
+ .button1{
+    border: 2px solid #888888;
+    border-radius: 12px;
+    padding: 10px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:white;
+    color: #888888;
+  }
+
+  .button1:hover{ 
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:#888888;
+    color: white;
+  }
+
+  a{text-decoration:none;
+}
+body{font-size:100%;}
+
+input{
+      border: 1.5px solid #888888; 
+      padding: 5px 0px;
+      border-radius: 4px;
+      padding-left:10px; 
+}
+body {
+    background:url(picture/flower3.jpg) no-repeat center 10px;
+    background-size: cover;
+    background-attachment: fixed;	
+    background-position: center 0px;
+}
+
+.background{
+  background:#f0f0f0;
+  border-radius:15px;
+  border:2px solid #a0a0a0;
+  width:500px;
+  line-height:30px;
+  text-align:center;
+  margin-left:470px;
+  margin-top:150px;
+
+}
+
+.login{
+  margin:20px;
+  color:#404040;
+}
+
+.c01{
+  margin-left:16px;
+}
+  </style>
+</head>
+<body> 
+    <div class="background"> 
+      <h1 class='login'>注册</h1>
+      <div class="c04">
+          <form method="post" action=register.php name='sregisterform' onsubmit="return rdata()">
+                <p >用户名:
+                  <input type='text' name='id' class='c01'>
+                </p>
+
+                <p> 输入密码: 
+                    <input type="password" name="pwd" >
+                </p>                   
+
+                <p> 确认密码: 
+                    <input type="password" name="pwd2" >
+                </p>
+
+            <button type="submit" class="button1">注册并登录</button> <br/><br/>
+            <a href="login.html" target="_parent">登录</a>
+            <br/><br/>
+        </form>
+    </div>
+    <script>
+        function isStudentNo(str) {
+            var reg=/^[0-9]{6}$/;   /*定义验证表达式*/
+            return reg.test(str);     /*进行验证*/
+            }
+        function rdata(){
+          var x=document.forms["sregisterform"]["id"].value;
+          var y=document.forms["sregisterform"]["pwd"].value;
+          var z=document.forms["sregisterform"]["pwd2"].value;
+                if(isStudentNo(x))
+                {
+                    if (y==null || y==""){
+                alert("请输入密码");
+                return false;
+                }
+                else{
+                    if(y.length>20){
+                        alert("密码过长");
+                        return false;
+                    }
+                }
+                if (z==null || z==""){
+                alert("请确认密码");
+                return false;
+                }
+                else{
+                    if(z.length>15){
+                        alert("密码过长");
+                        return false;
+                    }
+                        }
+                if(y!=z)
+                {
+                    alert("两次密码输入不符");
+                        return false;
+                }
+                }
+                else{
+                    alert('请输入6位学号(仅包含数字)');
+                    return false;
+                }
+
+                
+        }
+        </script> 
+    </body>
+    </html>

@@ -1,0 +1,395 @@
+<!-- <?php include'home.php'; ?> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOList</title>
+    <style>
+        /* 导航栏属性 */
+        .navigation {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .create {
+            width: 200px;
+            text-align: center;
+        }
+
+        .container {
+            width: 1000px;
+            margin: 20px auto;
+        }
+
+        /* 导航栏按钮属性 */
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+            float: left;
+        }
+
+        .size {
+            text-align: center;
+            width: 400px;
+            float: left;
+        }
+
+        .active {
+            text-align: center;
+            width: 400px;
+            background-color: #4CAF50;
+            float: left;
+        }
+
+        /* 创建任务按钮样式 */
+        .but {
+            border: 2px solid #4CAF50;
+            padding: 10px 20px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 30px;
+            margin-top: 20px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            background-color: white;
+            color: #4CAF50;
+        }
+
+        .but:hover {
+            border: 2px solid #4CAF50;
+            padding: 10px 20px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 30px;
+            margin-top: 20px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .size {
+            text-align: center;
+            width: 400px;
+            float: left;
+        }
+
+        .active {
+            text-align: center;
+            width: 400px;
+            background-color: #4CAF50;
+            float: left;
+        }
+
+        .create {
+            width: 200px;
+            text-align: center;
+        }
+
+        .container {
+            width: 1000px;
+            margin: 20px auto;
+        }
+
+        .vertical-timeline {
+            color: #FFF;
+            font-family: "Times New Roman", "Microsoft YaHei";
+        }
+
+        .vertical-timeline-block {
+            width: 70%;
+            border-left: 2px solid #DDD;
+            margin: 0 20px;
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .vertical-timeline-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            position: absolute;
+            left: -22px;
+            margin-top: 14px;
+
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: coral;
+            
+        }
+
+        .vertical-timeline-icon:hover {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            line-height: 50px;
+            left: -27px;
+            box-shadow: 0 0 5px #CCC;
+            font-size: 25px;
+        }
+
+        .vertical-timeline-block {
+            cursor: pointer;
+        }
+
+        /* .vertical-timeline-block:hover.vertical-timeline-icon {            
+            
+    }  */
+
+
+        .vertical-timeline-icon i {
+            font-style: normal;
+            color: white;
+        }
+
+        .vertical-timeline-content {
+            margin-left: 60px;
+            padding: 20px 30px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .vertical-timeline-content1 {
+            margin-left: 60px;
+            padding: 20px 30px;
+            border-radius: 5px;
+            position: relative;
+            background-color: coral;
+        }
+
+        .vertical-timeline-content2 {
+            margin-left: 60px;
+            padding: 20px 30px;
+            border-radius: 5px;
+            position: relative;
+            background-color: #A0A0A0;
+        }
+
+        .vertical-timeline-content1:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid coral;
+            border-left: 10px solid transparent;
+            position: absolute;
+            right: 100%;
+            top: 20px;
+        }
+
+        .vertical-timeline-content2:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #A0A0A0;
+            border-left: 10px solid transparent;
+            position: absolute;
+            right: 100%;
+            top: 20px;
+        }
+
+        .timeline-content {
+            text-indent: 2em;
+        }
+
+        .time-more {
+            overflow: hidden;
+        }
+
+        .time-more .time {
+            line-height: 40px;
+            display: inline-block;
+        }
+
+        .more {
+            f: right;
+            border-radius: 5px;
+            background-color: #A0A0A0;
+            display: inline-block;
+            height: 20px;
+            padding: 8px 15px;
+            color: #FFF;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .more:hover {
+            background-color: black;
+
+        }
+
+        .more-style1 {
+            border-radius: 5px;
+            background-color: #A0A0A0;
+        }
+
+        .more-style1:hover {
+            background-color: black;
+        }
+
+        .more-style2 {
+            border-radius: 5px;
+            background-color: #4CAF50;
+        }
+
+        .more-style2:hover {
+            background-color: black;
+        }
+
+        .astyle {
+            text-align: center;
+            /* font-size:2px; */
+            text-decoration: none;
+            color: white;
+            /* color:#111; */
+        }
+
+        .astyle:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="navigation">
+        <li><a href="myhome.html" class="active">我的主页</a></li>
+        <li><a href="friends.php" class="size">我的朋友</a></li>
+        <li><a href="login.html" class="size">退出登录</a></li>
+    </ul>
+    <br />
+    <a href="establish.html" class="but" id='button'>创建任务</a>
+    <br /><br />
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        var task, result;
+        $.ajax({
+            url: "home.php",
+            type: "post",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                result = data;
+                //  document.write(data.length);
+                console.log(data);
+            },
+            error: function () {
+                alert('出现异常啦...'); window.location.href = 'myhome.html'
+            }
+        });
+    </script>
+    <div class="container">
+        <div class="vertical-timeline" id='timeline'>
+
+        </div>
+    </div>
+
+    <script>
+        console.log("work");
+        var xh;
+        for (xh = 0; xh < result.length; xh++) {
+            var div = document.getElementById("timeline");
+            div.classList.add('vertical-timeline-block');
+
+            var br = document.createElement("br");
+            div.appendChild(br);
+
+            var div1 = document.createElement("div");
+            div.appendChild(div1);
+
+            var ti = document.createElement("i");
+            var node = document.createTextNode(xh + 1);
+            ti.appendChild(node);
+            // console.log(ti);
+            // var element = document.getElementById("div1");
+            // console.log(element);
+            div1.appendChild(ti);
+
+            var div2 = document.createElement("div");
+            div.appendChild(div2);
+            //todoname
+            var h2 = document.createElement("h2");
+            var node = document.createTextNode(result[xh].todoname);
+            h2.appendChild(node);
+            div2.appendChild(h2);
+
+            //comment
+            var p1 = document.createElement("p");
+            var node = document.createTextNode(result[xh].comment);
+            p1.appendChild(node);
+            div2.appendChild(p1);
+
+            var p2 = document.createElement("p");
+            div2.appendChild(p2);
+
+            //date
+            var span1 = document.createElement("span");
+            var node = document.createTextNode(result[xh].date);
+            span1.appendChild(node);
+            p2.appendChild(span1);
+
+
+            var span2 = document.createElement("span");
+            p2.appendChild(span2);
+            //修改按钮
+            var a = document.createElement("a");
+            var node = document.createTextNode("修改");
+            a.appendChild(node);
+            a.setAttribute("href", "modification.php");
+            span2.appendChild(a);
+            //传值
+
+            div1.classList.add('vertical-timeline-icon');
+            div2.classList.add('vertical-timeline-content1');
+            p1.classList.add('timeline-content');
+            p2.classList.add('time-more');
+            span1.classList.add('time');
+            span2.classList.add('more');
+            a.classList.add('astyle');
+
+            var br = document.createElement("br");
+            div.appendChild(br);
+            if (result[xh].con == 2) {
+                div1.style.backgroundColor = '#afeeee';
+                div2.style.backgroundColor = '#afeeee';
+            }
+            else if (result[xh].con == 3) {
+                div1.style.backgroundColor = '#eee8aa';
+                div2.style.backgroundColor = '#eee8aa';
+            }
+            else if (result[xh].con == 4) {
+                div1.style.backgroundColor = '#a9a9a9';
+                div2.style.backgroundColor = '#a9a9a9';
+            }
+        }
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

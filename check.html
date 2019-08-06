@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图书查询</title>
+<style>
+  .navigation{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.size{
+    text-align:center;
+    width: 400px;
+    float: left;
+}
+.active{
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+    float: left;
+}
+
+label i{
+    width:20px;
+    height:20px;
+    border:1.5px solid #b8b8b8;
+    vertical-align: middle;
+    display:inline-block;
+    border-radius:6px;
+    margin-left:5px;
+    background:white;
+}
+label input[type='radio']:checked+i{
+    background: url("picture/checked1.png") center center no-repeat white;
+    background-size:15px 15px;
+    border:1.5px solid #b8b8b8;
+}
+
+.kindform{
+    margin:10px;
+    border:2px solid #DDD;
+    background-color:#DDD;
+    text-align:center;
+    width:400px;
+    /* height:40px; */
+    padding:2px;
+    line-height:40px;
+    border-radius:7px;
+}
+
+.in{
+    width:290px;
+    border:1.5px solid #b8b8b8;
+    border-radius:6px;
+    }
+.button1{
+    text-align:center;
+    width:210px;
+    background:white;
+    border:1.5px solid #b8b8b8;
+    border-radius:6px;
+    color:#484848;
+    transition-duration: 0.3s;
+}
+
+.button1:hover{
+    background:#b8b8b8;
+    color:white;
+    transition-duration: 0.3s;
+}
+
+.time{
+    color: #FFF;
+    font-family: "Times New Roman", "Microsoft YaHei";
+    margin-left:600px;
+    margin-top: -100px;
+    margin-bottom:210px;
+    /* display:inline-block; */
+    border-left:3px solid #484848;
+}
+
+.time-icon{
+    text-align:center;
+    /* display:inline-block; */
+    transform:rotate(45deg);text-align:center;
+    margin-left:-14px;
+    margin-top:-25px;
+    width:25px;
+    height:25px;
+    background:#111;
+    position:absolute;
+}
+
+.time-line{
+    width:500px;
+    height:285px;
+    border:2px solid #d0d0d0 transparent;
+    border-left:2px solid #DDD;
+    padding-left:10px;
+    background:#c0c0c0;
+    margin-top:10px;
+    margin-left:25px;
+    border-radius:10px;
+    /* display:inline-block; */
+    box-shadow: 3px 3px 30px 0 rgba(0, 0, 0, 0.2);
+}
+
+.time-bookname{
+    border:3px solid white;
+    border-top:transparent;
+    border-left:transparent;
+    border-right:transparent;
+    margin:12px;
+    font-size:20px;
+    white-space:pre;
+    font-weight:bold;
+}
+
+body {
+    background:url(picture/flower1.jpg) no-repeat center 10px;
+    background-size: cover;
+    background-attachment: fixed;	
+    background-position: center 0px;
+}
+    </style>
+    </head>
+    <body>
+        <ul class="navigation">
+        <li><a href="shome.html"class="size">我的借阅</a></li>
+        <li><a href="check.html"class="active">查询图书</a></li>
+        <li><a href="quit.php"class="size">退出登录</a></li>
+        </ul>
+
+        <div class='kindform' name = 'kindform'>
+            搜索方式：&nbsp;&nbsp;
+            <label>              
+                <input type='radio' name='kind' value='bookname' hidden/>
+                <i></i>&nbsp;Bookname&nbsp;
+            </label>
+
+            <label>              
+                    <input type='radio' name='kind' value='author' hidden/>
+                    <i></i>&nbsp;Author&nbsp;
+            </label>
+
+            <label>              
+                    <input type='radio' name='kind' value='kind' hidden/>
+                    <i></i>&nbsp;Kind
+            </label>
+            搜索内容：
+            <input type='text' name='content' class='in' id='content'>
+            <input type="submit" name="submit" value="搜索" class="button1" onclick="return kindtest()"/>
+        </div>
+
+        <div id='time' class='time'>
+
+        </div>
+
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            var flag2 = 0;
+            var result;
+            function kindtest(){
+                var flag = 0;
+                
+                var kind = document.getElementsByName("kind");
+                var val= null;   
+                for(var i=0;i<kind.length;i++) {
+                    if(kind[i].checked==true) {
+                        val = kind[i].value;
+                        flag = 1;
+                    }
+                }
+                console.log(val);
+                if(flag == 0) {
+                    alert("请选择搜索方式");
+                    return false;
+                }
+            
+                var content = document.getElementById('content').value;
+                console.log(content);
+                if(content == '') {
+                    alert("请输入搜索内容");
+                    return false;
+                }
+                else if(content.length>100) {
+                    alert("输入内容过长");
+                    return false;
+                }
+
+                $.ajax({
+                url: "check.php",
+                data:{
+                    'kind':val,
+                    'content':content
+                },
+                type: "post",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    // console.log(data);
+                    result = data;
+                    //  document.write(data.length);
+                    console.log(result);
+                    flag2 += 1;
+                },
+                error: function () {
+                    alert('在您所选搜索方式无类似图书'); window.location.href = 'check.html'
+                }
+                });  
+                // alert(flag2);
+                 
+                if(flag2!=0) {
+                    
+                    var time = document.getElementById("time");
+                    time.classList.add('time');
+                    time.innerHTML= null;
+                    for(i=0;i<result.length;i++) {
+
+                        var icon = document.createElement("div");
+                        time.appendChild(icon);
+                        icon.classList.add('time-icon');
+
+                        var line = document.createElement("div");
+                        time.appendChild(line);
+                        line.classList.add('time-line');
+
+                        var br = document.createElement("br");
+                        line.appendChild(br);
+
+                        //开始向表格里填内容
+                        var number = document.createElement("p");
+                        var node = document.createTextNode("Number:" + "   "+(i + 1));
+                        number.appendChild(node);
+                        // console.log(ti);
+                        // var element = document.getElementById("div1");
+                        // console.log(element);
+                        line.appendChild(number);
+                        number.classList.add('time-bookname');
+
+                        var bookname = document.createElement("p");
+                        var node = document.createTextNode("Bookname:" + "   "+ result[i].bookname);
+                        bookname.appendChild(node);
+                        line.appendChild(bookname);
+                        bookname.classList.add('time-bookname');
+
+                        var author = document.createElement("p");
+                        var node = document.createTextNode("Author:" + "   "+ result[i].author);
+                        author.appendChild(node);
+                        line.appendChild(author);
+                        author.classList.add('time-bookname');
+                    
+                        var bookstorage = document.createElement("p");
+                        var node = document.createTextNode("Book Storage:" + "   "+ result[i].exist);
+                        bookstorage.appendChild(node);
+                        line.appendChild(bookstorage);
+                        bookstorage.classList.add('time-bookname');
+                    
+                        var times = document.createElement("p");
+                        var node = document.createTextNode("Book borrowing times:" + "   "+ result[i].times);
+                        times.appendChild(node);
+                        line.appendChild(times);
+                        times.classList.add('time-bookname');
+
+                        var totalpoints = document.createElement("p");
+                        var node = document.createTextNode("Total Points:" + "   "+ result[i].totalpoints);
+                        totalpoints.appendChild(node);
+                        line.appendChild(totalpoints);
+                        totalpoints.classList.add('time-bookname');
+
+                        var br = document.createElement("br");
+                        line.appendChild(br);
+
+                        var br = document.createElement("br");
+                        line.appendChild(br);
+
+                        var br = document.createElement("br");
+                        time.appendChild(br);
+                    }
+
+                }
+            return true;
+        }       
+
+        function interaction(){
+            
+        }
+        </script>
+        
+    </body>
+    </html>

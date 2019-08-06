@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>管理员注册</title>
+<style>
+ .button1{
+    border: 2px solid #888888;
+    border-radius: 12px;
+    padding: 10px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:white;
+    color: #888888;
+  }
+  .button1:hover{ 
+    border: 2px solid #888888;
+    padding: 10px 35px;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:#888888;
+    color: white;
+  }
+  a{text-decoration:none;
+}
+body{font-size:100%;}
+.c01{
+  font-family:"Times New Roman",Times,serif;
+  text-align:center;
+  font-size:4em;
+}
+div.c03{
+    display: block;
+    background-color: #4CAF50;
+    color:white;
+    text-align: left;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1em;
+    margin:0;
+}
+div.c04{
+    margin:60px;
+    padding: 40px;
+    padding-left: 500px;
+    border:2px solid #4CAF50;
+}
+div.c05{
+    margin:10px;
+    padding: 25px;
+    padding-left: 6px;
+}
+div.c06{
+    margin:5px;
+    padding: 15px;
+    padding-left: 35px;
+}
+.c07{
+  text-align: center;
+  padding-left: 100px;
+}
+input{
+      border: 1.5px solid #4CAF50; 
+      padding: 5px 0px;
+      border-radius: 4px;
+      padding-left:10px; 
+}
+  </style>
+</head>
+<body> 
+    <div class="c03"> 
+      <h1>管理员注册</h1>
+    </div>
+    
+      <div class="c04">
+          <form method="post" action=aregister.php name='aregisterform' onsubmit="return rdata()">
+                
+                <p>用户名称:
+                  <input type='text' name='id'>
+                </p>
+
+                      <p>用户密码: 
+                        <input type="password" name="pwd" >
+                    </p>                   
+
+                 <p> 确认密码: 
+                        <input type="password" name="pwd2" >
+                  </p>
+
+                  <p> 验证密码: 
+                    <input type="password" name="pwd3" >
+              </p>
+
+                  <div class="c06">
+                    <button type="submit" class="button1">注册并登录</button> <br/><br/>
+                    
+            </div>
+           <a href="alogin.html" target="_blank"class = "c07">登录</a>
+            <br/><br/>
+      </form>
+        
+    </div>
+    <script>
+        function isStudentNo(str) {
+            var reg=/^[0-9]{6}$/;   /*定义验证表达式*/
+            return reg.test(str);     /*进行验证*/
+            }
+        function rdata(){
+          var x=document.forms["aregisterform"]["id"].value;
+          var y=document.forms["aregisterform"]["pwd"].value;
+          var z=document.forms["aregisterform"]["pwd2"].value;
+          var u=document.forms["aregisterform"]["pwd3"].value;
+                if(isStudentNo(x))
+                {
+                    if (y==null || y==""){
+                        alert("请输入密码");
+                        return false;
+                        }
+                        else{
+                            if(y.length>20){
+                                alert("密码过长");
+                                return false;
+                            }
+                        }
+                        if (z==null || z==""){
+                        alert("请确认密码");
+                        return false;
+                        }
+                        else{
+                            if(z.length>15){
+                                alert("密码过长");
+                                return false;
+                            }
+                                }
+                        if(y!=z)
+                        {
+                            alert("两次密码输入不符");
+                                return false;
+                        }
+
+                        if (u==null || u==""){
+                        alert("请输入密码");
+                        return false;
+                        }
+                        else{
+                            if(u.length>20){
+                                alert("密码过长");
+                                return false;
+                            }
+                        }
+                        }
+                        else{
+                            alert('请输入6位学号(仅包含数字)');
+                            return false;
+                        }
+
+
+        }
+        </script> 
+    </body>
+    </html>

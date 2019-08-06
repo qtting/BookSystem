@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TODOList</title>
+<style>
+/* 导航栏属性 */
+.navigation{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navigation2{
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    /* z-index:-1;  */
+} 
+
+.size{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align:center;
+    width: 400px;
+    float: left;
+}
+.size:hover{
+    text-align:center;
+    width: 400px;
+    background-color: #111;
+    float: left;
+}
+.active{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    float: left;
+} 
+.active:hover{
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    background-color: #111;
+    float: left;
+}
+.size2{
+    border:2px solid #e8e8e8;
+    border-radius: 12px;
+    text-decoration: none;
+    display: block;
+    color: black;
+    background-color: #e8e8e8;
+    margin-top:20px;
+    margin-left:20px;
+    padding: 14px 16px;
+    text-align:center;
+    width: 125px;
+    position: relative;
+}
+.size2:hover{
+    text-align:center;
+    background-color: #4caf50;
+    color:white;
+}
+
+.size1{
+    border:2px solid white;
+    border-radius: 12px;
+    text-decoration: none;
+    display: block;
+    color: white;
+    background-color: #4caf50;
+    margin-top:20px;
+    margin-left:20px;
+    padding: 14px 16px;
+    text-align:center;
+    width: 125px;
+    position: relative;
+}
+.size1:hover{
+    text-align:center;
+    background-color: #e8e8e8;
+    color:black;
+}
+
+
+
+
+div.header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    z-index: -1;
+}
+
+div.containers {
+    padding: 10px;
+}
+body {
+    background:url(picture/leaf2.jpg) no-repeat center 10px;
+    background-size: cover;
+    background-attachment: fixed;	
+    background-position: center 0px;
+}
+</style>
+</head>
+<body>
+
+<ul class="navigation">
+
+            <li><a href="ahome.html"class="active">图书管理</a></li>
+            <li><a href="quit.php"class="size">退出登录</a></li>
+            <li><a href="shome.html"class="size">用户权限</a></li>
+</ul>
+<br/>
+
+<ul class="navigation2" >   
+    <li><a class = 'size2'href='increase.html'>增加图书</a></li>
+    <li><a class = 'size2' href="delete.html">删除图书</a></li>   
+</ul>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图书修改</title>
+<style>
+
+.form{
+    margin:140px;
+    margin-top: 200px;
+    margin-left:380px;
+    font-family:  "Times New Roman", "Microsoft YaHei";
+    
+}
+.in{
+        border: 1.8px solid #4CAF50;
+        width: 550px;            
+        height: 30px;            
+        border-radius: 10px;            
+        position: absolute;                     
+        text-align: left;                        
+        cursor: auto;              
+}
+.comment{
+        border: 1.8px solid #4CAF50;
+        width: 900px; 
+        height:400px;                     
+        border-radius: 10px;            
+        position: absolute;                     
+        text-align: left;                        
+        cursor: auto
+        
+}
+
+.button1{
+    border: 2px solid #4CAF50;
+    border-radius: 20px;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-left:800px;
+    margin-top: 200px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:white;
+    color: #4CAF50;
+  }
+  .button1:hover{ 
+    border: 2px solid #4CAF50;
+    padding: 10px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-left:800px;
+    margin-top: 200px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:#4CAF50;
+    color: white;
+  }
+
+  .navigation{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.size{
+    text-align:center;
+    width: 400px;
+    float: left;
+}
+.active{
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+    float: left;
+}
+    </style>
+    </head>
+    <body>
+        <ul class="navigation">
+        <li><a href="ahome.html"class="size">图书修改</a></li>
+        <li><a href="modification.html"class="active">修改图书</a></li>
+        <li><a href="quit.php"class="size">退出登录</a></li>
+        </ul>
+
+        <script>
+                function affirm(){
+                    var r = confirm("确定修改？");
+                    if(r == true)
+                    {
+                        return true;
+                    }       
+                }
+        </script>
+
+        <form class="form" method="post" action=modification.php name='mform' onsubmit="return test()"> 
+        图书名称：<input type="text" name="name"class="in"></br><br/><br/>
+        图书作者：<input type="text" name="author"class="in"></br><br/><br/>
+        图书数量：<input type="number" name="booknumber"class="in" min='0' max='10000'></br><br/><br/>
+        <input type="submit" name="submit" value="修改" class="button1"> 
+        </form>
+
+
+        <script>
+        function test(){
+            if(affirm)
+            {
+                var name=document.forms["mform"]["name"].value;
+                  var author=document.forms["mform"]["author"].value;
+                  if (name==null || name==""){
+                  alert("请输入书名");
+                  return false;
+                  }
+                  else{
+                      if(name.length>15){
+                          alert("书名过长");
+                          return false;
+                      }
+                  }
+                  if (author==null || author==""){
+                  alert("请输入作者名字");
+                  return false;
+                  }
+                  else{
+                      if(author.length>15){
+                          alert("作者名过长");
+                          return false;
+                      }
+                  }
+
+            }
+                  
+                }
+        </script>
+    </body>
+    </html>

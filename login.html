@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录界面</title>
+</head>
+<style>
+.button1{
+    width:100px;
+    margin:10px;
+    border: 2px solid #888888;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:white;
+    color: black;
+  }
+  .button1:hover{ 
+    transition-duration: 0.4s;
+    background-color:#888888;
+    color: white;
+    text-align: center;
+  }
+
+  .button2{
+    width:95px;
+    margin:10px;
+    line-height:41px;
+    border: 2px solid #888888;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:white;
+    color: black;
+  }
+  .button2:hover{ 
+    transition-duration: 0.4s;
+    background-color:#888888;
+    color: white;
+    text-align: center;
+  }
+  a {
+      text-decoration:none;
+  }
+
+.background{
+  background:#f0f0f0;
+  border-radius:15px;
+  border:2px solid #a0a0a0;
+  width:500px;
+  line-height:30px;
+  text-align:center;
+  margin-left:470px;
+  margin-top:150px;
+
+}
+
+.login{
+  margin:20px;
+  color:#404040;
+}
+
+input{
+      border: 1.5px solid #888888; 
+      padding: 7px 0px;
+      border-radius: 4px;
+      padding-left:10px; 
+      margin:5px;
+}
+
+body {
+    background:url(picture/flower3.jpg) no-repeat center 10px;
+    background-size: cover;
+    background-attachment: fixed;	
+    background-position: center 0px;
+}
+.c01{
+  margin-left: -15px;
+}
+</style>
+<body>
+        <div class='background'> 
+          <br/>
+                <h1 class='login'>登录</h1>
+                <div >
+                    <form method="post" action=login.php name='loginform' onsubmit="return validate()">
+                          <p class='c01'>用户名:
+                          <input type='text' name='id' >
+                          </p>
+                          <div class="c05">
+                                <p> 密码: 
+                              <input type="password" name="pwd" >
+                              </p>
+                          </div>
+                      <div >
+                        <input type="submit" name="submit" value="登录&nbsp;" class="button1"> 
+                        <a href="register.html" target="_parent" class='button2'>注册</a>
+                      </div>
+                      
+                      <br/><br/>
+                </form></div>
+                <script>
+                function validate(){
+                  var x=document.forms["loginform"]["id"].value;
+                  var y=document.forms["loginform"]["pwd"].value;
+                  if (x==null || x==""){
+                  alert("请填写用户名");
+                  return false;
+                  }
+                  else{
+                      if(x.length>10){
+                          alert("用户名过长");
+                          return false;
+                      }
+                  }
+                  if (y==null || y==""){
+                  alert("请输入密码");
+                  return false;
+                  }
+                  else{
+                      if(y.length>20){
+                          alert("密码过长");
+                          return false;
+                      }
+                  }
+                }
+                </script>  
+              </div>
+</body>
+</html>

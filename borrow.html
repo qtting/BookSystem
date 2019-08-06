@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图书借阅</title>
+<style>
+
+.form{
+    margin:140px;
+    margin-top: 200px;
+    margin-left:380px;
+    font-family:  "Times New Roman", "Microsoft YaHei";
+    
+}
+.in{
+        border: 1.8px solid #4CAF50;
+        width: 550px;            
+        height: 30px;            
+        border-radius: 10px;            
+        position: absolute;                     
+        text-align: left;                        
+        cursor: auto;              
+}
+.comment{
+        border: 1.8px solid #4CAF50;
+        width: 900px; 
+        height:400px;                     
+        border-radius: 10px;            
+        position: absolute;                     
+        text-align: left;                        
+        cursor: auto
+        
+}
+
+.button1{
+    border: 2px solid #4CAF50;
+    border-radius: 20px;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-left:800px;
+    margin-top: 200px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:white;
+    color: #4CAF50;
+  }
+  .button1:hover{ 
+    border: 2px solid #4CAF50;
+    padding: 10px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-left:800px;
+    margin-top: 200px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color:#4CAF50;
+    color: white;
+  }
+
+  .navigation{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.size{
+    text-align:center;
+    width: 400px;
+    float: left;
+}
+.active{
+    text-align:center;
+    width: 400px;
+    background-color: #4CAF50;
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+    float: left;
+}
+
+body {
+    background:url(picture/book.jpg) no-repeat center 10px;
+    background-size: cover;
+    background-attachment: fixed;	
+    background-position: center 0px;
+}
+    </style>
+    </head>
+    <body>
+        <ul class="navigation">
+        <li><a href="shome.html"class="size">我的借阅</a></li>
+        <li><a href="borrow.html"class="active">借阅图书</a></li>
+        <li><a href="quit.php"class="size">退出登录</a></li>
+        </ul>
+
+        <form class="form" method="post" action=borrow.php name='borrowname' onsubmit="return test()"> 
+        图书名称：<input type="text" name="name"class="in"></br><br/><br/>
+        图书作者：<input type="text" name="author"class="in"></br>
+        <input type="submit" name="submit" value="借阅" class="button1"> 
+        </form>
+        <script>
+        function test(){
+                  var name=document.forms["borrowname"]["name"].value;
+                  var author=document.forms["borrowname"]["author"].value;
+                  if (name==null || name==""){
+                  alert("请输入书名");
+                  return false;
+                  }
+                  else{
+                      if(name.length>15){
+                          alert("书名过长");
+                          return false;
+                      }
+                  }
+                  if (author==null || author==""){
+                  alert("请输入作者名字");
+                  return false;
+                  }
+                  else{
+                      if(author.length>15){
+                          alert("作者名过长");
+                          return false;
+                      }
+                  }
+                }
+        </script>
+    </body>
+    </html>
